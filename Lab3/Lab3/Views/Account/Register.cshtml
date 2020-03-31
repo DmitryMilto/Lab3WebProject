@@ -1,0 +1,31 @@
+﻿@model RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Register</h1>
+
+<form class="user" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <input asp-for="FirstName" type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name">
+        </div>
+        <div class="col-sm-6">
+            <input asp-for="LastName" type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name">
+        </div>
+    </div>
+    <div class="form-group">
+        <input asp-for="Email" type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address">
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <input asp-for="Password" type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+
+            <div class="col-sm-6">
+                <input asp-for="ConfirmPassword" type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
+            </div>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Register Account</button>
+</form>
