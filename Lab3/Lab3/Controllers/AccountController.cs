@@ -27,7 +27,16 @@ namespace Lab3.Controllers
         [HttpGet]
         public IActionResult Register()
         {
+            int selectedIndex = 1;
+            SelectList states = new SelectList(db.States, "Id", "Name", selectedIndex);
+            ViewBag.States = states;
+            SelectList cities = new SelectList(db.Cities.Where(c => c.StateId == selectedIndex), "Id", "Name");
+            ViewBag.Cities = cities;
             return View();
+        }
+        public ActionResult GetItems(int id)
+        {
+            return PartialView(db.Cities.Where(c => c.StateId == id).ToList());
         }
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
@@ -40,6 +49,8 @@ namespace Lab3.Controllers
                     FirstName = model.FirstName,
                     Email = model.Email,
                     UserName = model.Email,
+                    CityId = model.City,
+                    CountryId = model.State
                 };
                 // добавляем пользователя
                 var result = await _userManager.CreateAsync(user, model.Password);

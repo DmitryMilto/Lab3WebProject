@@ -18,7 +18,7 @@ namespace Lab3.Models
         [Required(ErrorMessage = "Не указан FirstName")]
         public string FirstName { get; set; }
         public int City { get; set; }
-        public int Country { get; set; }
+        public int State { get; set; }
 
         [Required(ErrorMessage = "Не указан пароль")]
         [DataType(DataType.Password)]
